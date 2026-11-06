@@ -1,0 +1,4 @@
+== Subida ==
+Completed 32 Bytes/32 Bytes (3.5 KiB/s) with 1 file(s) remainingupload: ./test.txt to s3://actividad3-seguro-local/test.txt     
+== Listado ==
+2026-11-06 12:05:22         32 test.txt

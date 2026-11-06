@@ -1,0 +1,20 @@
+== terraform state list ==
+aws_s3_bucket.seguro
+aws_s3_bucket_public_access_block.seguro
+aws_s3_bucket_server_side_encryption_configuration.seguro
+
+== head-object ==
+{
+    "AcceptRanges": "bytes",
+    "LastModified": "2026-11-06T18:05:22+00:00",
+    "ContentLength": 32,
+    "ETag": "\"544936653690316e6085ec60f2dfbb13\"",
+    "ContentType": "text/plain",
+    "ServerSideEncryption": "AES256",
+    "Metadata": {}
+}
+
+== get-bucket-location ==
+{
+    "LocationConstraint": null
+}

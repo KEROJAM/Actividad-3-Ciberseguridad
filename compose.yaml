@@ -1,0 +1,21 @@
+services:
+  localstack:
+    image: localstack/localstack:latest
+    container_name: actividad3-localstack
+    ports:
+      # Solo accesible desde esta máquina, nunca desde la red local.
+      - "127.0.0.1:4566:4566"
+    environment:
+      # El token se lee del entorno; nunca se escribe en este archivo.
+      LOCALSTACK_AUTH_TOKEN: ${LOCALSTACK_AUTH_TOKEN:?Define LOCALSTACK_AUTH_TOKEN (ver README)}
+      SERVICES: s3
+      DEBUG: "0"
+      PERSISTENCE: "0"
+    healthcheck:
+      # La imagen no incluye curl; se usa el Python que sí trae LocalStack.
+      test: ["CMD-SHELL", "python3 -c \"import urllib.request; urllib.request.urlopen('http://localhost:4566/_localstack/health', timeout=3)\""]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+    restart: unless-stopped

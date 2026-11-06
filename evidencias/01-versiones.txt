@@ -1,0 +1,16 @@
+== Fecha ==
+2026-11-06T12:01:48-06:00
+
+== Podman ==
+podman version 6.1.4
+== Docker (emulado) ==
+Emulate Docker CLI using podman. Create /etc/containers/nodocker to quiet msg.
+podman version 6.1.4
+== Compose ==
+podman-compose version 1.6.0
+== Terraform ==
+Terraform v1.15.9
+== AWS CLI ==
+aws-cli/2.39.5 Python/3.14.8 Linux/7.2.14-zen1-1-zen exe/x86_64.arch
+== Imagen LocalStack ==
+ID=1f281a1945f1886d0f73955e0296a4cee0da3e8ff9e9d91e09ffff10d8bdb3c1 Size=1159940075

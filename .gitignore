@@ -1,0 +1,87 @@
+# ============================================================
+#  Secretos y credenciales
+# ============================================================
+# El token real de LocalStack vive en .env y NUNCA debe subirse.
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Credenciales y certificados
+.aws/
+.credentials
+credentials
+credentials.*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# ============================================================
+#  Terraform
+# ============================================================
+.terraform/
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+*.tfplan
+*.tfplan.*
+.terraform.tfstate.lock.info
+
+# Archivos de override (pueden contener valores locales)
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Variables locales (se conservan los ejemplos)
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
+!*.tfvars.json.example
+
+# Logs de Terraform
+crash.log
+crash.*.log
+
+# ============================================================
+#  LocalStack
+# ============================================================
+localstack-data/
+volume/
+.localstack/
+
+# ============================================================
+#  Archivos de prueba del laboratorio
+# ============================================================
+test.txt
+
+# ============================================================
+#  Exportación de Org / LaTeX
+# ============================================================
+Actividad-3.tex
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# ============================================================
+#  Sistema operativo y editores
+# ============================================================
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
+
+# ============================================================
+#  Python (por si se agregan scripts auxiliares)
+# ============================================================
+__pycache__/
+*.py[cod]
+.venv/

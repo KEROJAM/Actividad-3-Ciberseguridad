@@ -1,0 +1,15 @@
+== Acceso anónimo (path-style) ==
+HTTP/1.1 200 OK
+Server: TwistedWeb/26.4.0
+Date: Fri, 06 Nov 2026 18:05:23 GMT
+Content-Type: text/plain
+accept-ranges: bytes
+Last-Modified: Fri, 06 Nov 2026 18:05:22 GMT
+Content-Length: 32
+ETag: "544936653690316e6085ec60f2dfbb13"
+x-amz-server-side-encryption: AES256
+x-amz-request-id: 6fae45d7-b25d-4baa-b391-7d4a3f07dccd
+x-amz-id-2: s9lzHYrFp76ZVxRcpX9+5cjAnEH2ROuNkd2BHfIa6UkFVdtjf5mKR3/eTPFvsiP/XV/VLi31234=
+x-localstack: 2026.10.6
+
+Archivo de prueba - Actividad 3
