@@ -1,0 +1,91 @@
+
+Report Summary
+
+┌─────────┬───────────┬───────────────────┐
+│ Target  │   Type    │ Misconfigurations │
+├─────────┼───────────┼───────────────────┤
+│ .       │ terraform │         0         │
+├─────────┼───────────┼───────────────────┤
+│ main.tf │ terraform │         3         │
+└─────────┴───────────┴───────────────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+
+main.tf (terraform)
+===================
+Tests: 3 (SUCCESSES: 0, FAILURES: 3)
+Failures: 3 (UNKNOWN: 0, LOW: 1, MEDIUM: 1, HIGH: 1, CRITICAL: 0)
+
+AWS-0089 (LOW): Bucket has logging disabled
+════════════════════════════════════════
+Ensures S3 bucket logging is enabled for S3 buckets
+
+See https://avd.aquasec.com/misconfig/aws-0089
+────────────────────────────────────────
+ main.tf:2-13
+────────────────────────────────────────
+   2 ┌ resource "aws_s3_bucket" "seguro" {
+   3 │   bucket = "actividad3-seguro-local"
+   4 │ 
+   5 │   # Facilita la limpieza del laboratorio aunque el bucket tenga objetos.
+   6 │   force_destroy = true
+   7 │ 
+   8 │   tags = {
+   9 │     Name        = "actividad3-seguro-local"
+  10 └     Environment = "local"
+  ..   
+────────────────────────────────────────
+
+
+AWS-0090 (MEDIUM): Bucket does not have versioning enabled
+════════════════════════════════════════
+Versioning in Amazon S3 is a means of keeping multiple variants of an object in the same bucket.
+
+You can use the S3 Versioning feature to preserve, retrieve, and restore every version of every object stored in your buckets.
+
+With versioning you can recover more easily from both unintended user actions and application failures.
+
+When you enable versioning, also keep in mind the potential costs of storing noncurrent versions of objects. To help manage those costs, consider setting up an S3 Lifecycle configuration.
+
+
+See https://avd.aquasec.com/misconfig/aws-0090
+────────────────────────────────────────
+ main.tf:2-13
+────────────────────────────────────────
+   2 ┌ resource "aws_s3_bucket" "seguro" {
+   3 │   bucket = "actividad3-seguro-local"
+   4 │ 
+   5 │   # Facilita la limpieza del laboratorio aunque el bucket tenga objetos.
+   6 │   force_destroy = true
+   7 │ 
+   8 │   tags = {
+   9 │     Name        = "actividad3-seguro-local"
+  10 └     Environment = "local"
+  ..   
+────────────────────────────────────────
+
+
+AWS-0132 (HIGH): Bucket does not encrypt data with a customer managed key.
+════════════════════════════════════════
+Encryption using AWS keys provides protection for your S3 buckets. To gain greater control over encryption, such as key rotation, access policies, and auditability, use customer managed keys (CMKs) with SSE-KMS.
+Note that SSE-KMS is not supported for S3 server access logging destination buckets; in such cases, use SSE-S3 instead.
+
+
+See https://avd.aquasec.com/misconfig/aws-0132
+────────────────────────────────────────
+ main.tf:16-24
+────────────────────────────────────────
+  16 ┌ resource "aws_s3_bucket_server_side_encryption_configuration" "seguro" {
+  17 │   bucket = aws_s3_bucket.seguro.id
+  18 │ 
+  19 │   rule {
+  20 │     apply_server_side_encryption_by_default {
+  21 │       sse_algorithm = "AES256"
+  22 │     }
+  23 │   }
+  24 └ }
+────────────────────────────────────────
+
+
